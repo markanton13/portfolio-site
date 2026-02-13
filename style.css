@@ -23,3 +23,30 @@ section {
 #about {
     background-color: #f4f4f4;
 }
+
+#projects {
+    background-color: #ffffff;
+}
+
+.project-card {
+    background: #f9f9f9;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.project-card h3 {
+    margin-top: 0;
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #111;
+    font-weight: bold;
+}
+
+.project-card a:hover {
+    text-decoration: underline;
+}
