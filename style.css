@@ -281,3 +281,43 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (max-width: 768px) {
+
+    /* Reduce section spacing slightly */
+    section {
+        padding: 40px 16px;
+    }
+
+    /* Adjust navbar padding for smaller screens */
+    nav {
+        padding: 12px 20px;
+    }
+
+    /* Scale hero text properly */
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .cta-btn {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
+
+    /* Stack stats vertically */
+    .stats {
+        flex-direction: column;
+        gap: 25px;
+        padding: 40px 20px;
+    }
+
+    /* Improve project card spacing */
+    .project-card {
+        padding: 20px;
+    }
+
+}
