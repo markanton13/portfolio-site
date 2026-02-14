@@ -10,6 +10,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+	<a href="#main-content" class="skip-link">
+	Skip to main content
+	</a>
 	
 	<nav>
     <a href="#" class="logo">
@@ -17,8 +20,12 @@
         <span>Mark Anton</span>
     </a>
 
-    <button class="menu-toggle" aria-label="Toggle navigation menu">
-    &#9776;
+    <button 
+		class="menu-toggle" 
+		aria-label="Toggle navigation menu"
+		aria-expanded="false"
+	>
+		&#9776;
 	</button>
 
     <ul class="nav-links">
@@ -38,7 +45,7 @@
     </div>
 	</header>
 	
-<main>	
+<main id="main-content">
 	<section class="stats">
     <div class="stat">
         <h3>3+</h3>
@@ -87,14 +94,14 @@
 		
         <article class="project-card">
             <h3>Dev Notes</h3>
-			<img src="images/dev-notes.png" alt="Dev Notes Screenshot" class="project-img" loading="lazy">
+			<img src="images/dev-notes.png" alt="Screenshot of Dev Notes project showing Git learning journal interface" class="project-img" loading="lazy">
             <p>A structured technical learning journal focused on Git fundamentals and workflow discipline.</p>
             <a href="https://github.com/markanton13/dev-notes" target="_blank"  rel="noopener noreferrer">View on GitHub</a>
         </article>
 
         <article class="project-card">
             <h3>Learning GitHub</h3>
-			<img src="images/learning-github.png" alt="Learning GitHub Screenshot" class="project-img" loading="lazy">
+			<img src="images/learning-github.png" alt="Screenshot of Learning GitHub project" class="project-img" loading="lazy">
             <p>Repository documenting my step-by-step journey in mastering Git and GitHub workflows.</p>
             <a href="https://github.com/markanton13/learning-github" target="_blank" rel="noopener noreferrer">View on GitHub</a>
         </article>
@@ -127,15 +134,6 @@
 			</form>
 	</section>
 </main>
-	
-<script>
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector(".nav-links");
-
-    toggle.addEventListener("click", () => {
-        nav.classList.toggle("active");
-    });
-</script>
 
 <footer>
     <div class="container footer-content">
@@ -147,6 +145,16 @@
         </div>
     </div>
 </footer>
+
+<script>
+    const toggle = document.querySelector(".menu-toggle");
+	const nav = document.querySelector(".nav-links");
+
+	toggle.addEventListener("click", () => {
+    const isActive = nav.classList.toggle("active");
+    toggle.setAttribute("aria-expanded", isActive);
+	});
+</script>
 	
 <script>
 const reveals = document.querySelectorAll(".reveal");
