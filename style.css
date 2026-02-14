@@ -14,7 +14,6 @@ nav {
     padding: 12px 50px;
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     z-index: 1000;
@@ -27,6 +26,7 @@ nav {
     color: white;
     font-weight: bold;
     font-size: 18px;
+	margin-right: auto;
 }
 
 .nav-icon {
@@ -194,27 +194,6 @@ section {
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        background: black;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 20px;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-}
-
 .project-img {
     width: 100%;
     border-radius: 8px;
@@ -284,21 +263,39 @@ footer {
 
 @media (max-width: 768px) {
 	
-	.menu-toggle {
-    display: block;
-	}
 
-    /* Reduce section spacing slightly */
     section {
         padding: 40px 16px;
     }
 
-    /* Adjust navbar padding for smaller screens */
     nav {
         padding: 12px 20px;
+        position: relative;
     }
 
-    /* Scale hero text properly */
+    .menu-toggle {
+        display: block;
+        margin-left: auto;
+        font-size: 26px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #000;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 20px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
     .hero-content h1 {
         font-size: 36px;
     }
@@ -312,14 +309,12 @@ footer {
         font-size: 14px;
     }
 
-    /* Stack stats vertically */
     .stats {
         flex-direction: column;
         gap: 25px;
         padding: 40px 20px;
     }
 
-    /* Improve project card spacing */
     .project-card {
         padding: 20px;
     }
