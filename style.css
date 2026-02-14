@@ -81,7 +81,7 @@ body {
     color: var(--text-dark);
 }
 
-header {
+.hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
