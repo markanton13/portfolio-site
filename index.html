@@ -193,6 +193,37 @@
         <h2>Projects</h2>
 		</header>
 		
+		<article class="project-card">
+		<h3>Habit Tracker v1.2</h3>
+		<div class="slider">
+		<div class="slides">
+		<img src="images/habit-light.png" class="slide active" alt="Light mode">
+		<img src="images/habit-dark.png" class="slide" alt="Dark mode">
+		<img src="images/habit-with-habits.png" class="slide" alt="With habits">
+		<img src="images/habit-streak.png" class="slide" alt="Streak system">
+		<img src="images/habit-progress.png" class="slide" alt="Progress tracking">
+		</div>
+
+		<div class="slider-controls">
+		<button class="slide-btn prev">&#10094;</button>
+		<div class="dots"></div>
+		<button class="slide-btn next">&#10095;</button>
+		</div>
+
+		</div>
+
+		<p>
+			A state-driven productivity web app built with Vanilla JavaScript.
+			Features persistent storage, daily reset logic, streak tracking,
+			dark mode support, and keyboard accessibility.
+		</p>
+
+		<a href="https://github.com/markanton13/habit-tracker" target="_blank">
+			View on GitHub
+		</a>
+
+		</article>
+		
         <article class="project-card">
             <h3>Dev Notes</h3>
 			<img src="images/dev-notes.png" alt="Screenshot of Dev Notes project showing Git learning journal interface" class="project-img" loading="lazy">
@@ -274,6 +305,88 @@ const observer = new IntersectionObserver(entries => {
 
 reveals.forEach(section => {
     observer.observe(section);
+});
+</script>
+
+<script>
+const sliders = document.querySelectorAll(".slider");
+
+sliders.forEach(slider => {
+
+    const slides = slider.querySelectorAll(".slide");
+    const prevBtn = slider.querySelector(".prev");
+    const nextBtn = slider.querySelector(".next");
+    const dotsContainer = slider.querySelector(".dots");
+
+    let currentIndex = 0;
+    let interval;
+
+    // Create dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement("div");
+        dot.classList.add("dot");
+        if (index === 0) dot.classList.add("active");
+
+        dot.addEventListener("click", () => {
+            currentIndex = index;
+            updateSlider();
+        });
+
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = slider.querySelectorAll(".dot");
+
+    function updateSlider() {
+        slides.forEach(slide => slide.classList.remove("active"));
+        dots.forEach(dot => dot.classList.remove("active"));
+
+        slides[currentIndex].classList.add("active");
+        dots[currentIndex].classList.add("active");
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+    }
+
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+
+    // Auto-slide
+    function startAutoSlide() {
+        interval = setInterval(nextSlide, 4000);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(interval);
+    }
+
+    slider.addEventListener("mouseenter", stopAutoSlide);
+    slider.addEventListener("mouseleave", startAutoSlide);
+
+    startAutoSlide();
+
+    // Mobile swipe
+    let startX = 0;
+
+    slider.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+
+    slider.addEventListener("touchend", e => {
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+
+        if (diff > 50) nextSlide();
+        if (diff < -50) prevSlide();
+    });
+
 });
 </script>
 
